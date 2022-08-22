@@ -4,12 +4,14 @@ import lombok.Data;
 
 @Data
 public class User {
+    private String id;
     private String name;
     private String username;
     private String email;
     private String phone;
     private String website;
-    private String address;
+    private Address address;
+    private Company company;
 
     public User() {
     }
@@ -17,7 +19,4 @@ public class User {
     public User(String x, String s) {
     }
 
-    // https://jsonplaceholder.typicode.com/todos
-    // https://jsonplaceholder.typicode.com/posts
-    // https://jsonplaceholder.typicode.com/posts/1
 }

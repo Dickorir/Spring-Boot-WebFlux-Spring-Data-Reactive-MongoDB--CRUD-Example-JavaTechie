@@ -2,6 +2,7 @@ package com.java.reactive.controller;
 
 import com.java.reactive.dto.ProductDto;
 import com.java.reactive.models.AbilitiesResponse;
+import com.java.reactive.models.PokeMonData;
 import com.java.reactive.models.User;
 import com.java.reactive.service.ProductService;
 import com.java.reactive.service.TestService;
@@ -30,7 +31,8 @@ public class ProductController {
     }
 
     @GetMapping("/get-url")
-    public Mono<AbilitiesResponse> getUrl() {
+    public Mono<PokeMonData> getUrl() {
+        System.out.println("hapa");
         return testService.someRestCall();
     }
 
