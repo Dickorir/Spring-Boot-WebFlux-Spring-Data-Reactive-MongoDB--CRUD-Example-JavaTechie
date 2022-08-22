@@ -1,7 +1,10 @@
 package com.java.reactive.controller;
 
 import com.java.reactive.dto.ProductDto;
+import com.java.reactive.models.AbilitiesResponse;
+import com.java.reactive.models.User;
 import com.java.reactive.service.ProductService;
+import com.java.reactive.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -13,6 +16,8 @@ public class ProductController {
 
     @Autowired
     private ProductService service;
+    @Autowired
+    private TestService testService;
 
     @GetMapping
     public Flux<ProductDto> getProducts() {
@@ -22,6 +27,21 @@ public class ProductController {
     @GetMapping("/{id}")
     public Mono<ProductDto> getProduct(@PathVariable String id) {
         return service.getProduct(id);
+    }
+
+    @GetMapping("/get-url")
+    public Mono<AbilitiesResponse> getUrl() {
+        return testService.someRestCall();
+    }
+
+    @GetMapping("/get-user/{id}")
+    public Mono<User> getUser(@PathVariable String id) {
+        return testService.getUser(id);
+    }
+
+    @GetMapping("/get-users")
+    public Flux<User> getUsers() {
+        return testService.getUsers();
     }
 
     @GetMapping("/product-range")
